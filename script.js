@@ -82,9 +82,18 @@ if (particlesEl) {
 
 // ===== FORM HANDLER =====
 const form = document.getElementById('join-form');
+const modal = document.getElementById('success-modal');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const btn = document.getElementById('submit-application-btn');
+    btn.disabled = true;
+    btn.textContent = '⏳ Submitting...';
+    btn.style.background = '#888';
+
     const data = new FormData(form);
     const name = data.get('fullName') || '';
     const role = data.get('role') || '';
@@ -96,19 +105,51 @@ if (form) {
     const social = data.get('socialLinks') || '';
     const age = data.get('age') || '';
 
-    const subject = encodeURIComponent(`OG Alaparai Application – ${name} – ${role}`);
-    const body = encodeURIComponent(
-      `Hi OG Alaparai Team!\n\n` +
-      `Name: ${name}\nAge: ${age}\nPhone: ${phone}\nEmail: ${email}\nLocation: ${location}\n` +
-      `Role: ${role}\n\nExperience/Skills:\n${experience}\n\nSocial/Portfolio: ${social}\n\n` +
-      `Why I Want to Join:\n${whyJoin}\n\n(Please attach resume to this email)`
-    );
-    window.location.href = `mailto:firefixapp@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Success feedback
-    const btn = document.getElementById('submit-application-btn');
-    btn.textContent = '✅ Email Client Opening...';
-    btn.style.background = '#4caf50';
-    setTimeout(() => { btn.textContent = '🔥 Submit My Application'; btn.style.background = ''; }, 3000);
+    // Send via FormSubmit AJAX
+    fetch("https://formsubmit.co/ajax/contact@ogalaparai.com", {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "Name": name,
+        "Age": age,
+        "Phone": phone,
+        "Email": email,
+        "Location": location,
+        "Role": role,
+        "Experience/Skills": experience,
+        "Social/Portfolio Links": social,
+        "Why Join": whyJoin
+      })
+    })
+    .then(response => response.json())
+    .then(result => {
+      btn.disabled = false;
+      btn.textContent = '🔥 Submit My Application';
+      btn.style.background = '';
+      
+      if (modal) {
+        modal.classList.add('open');
+      } else {
+        alert("Thank You your response have been Submitted");
+      }
+      
+      form.reset();
+    })
+    .catch(error => {
+      console.error("Error submitting form:", error);
+      btn.disabled = false;
+      btn.textContent = '🔥 Submit My Application';
+      btn.style.background = '';
+      alert("Something went wrong. Please try sending details directly to contact@ogalaparai.com");
+    });
+  });
+}
+
+if (modalCloseBtn && modal) {
+  modalCloseBtn.addEventListener('click', () => {
+    modal.classList.remove('open');
   });
 }
