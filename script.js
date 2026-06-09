@@ -153,3 +153,18 @@ if (modalCloseBtn && modal) {
     modal.classList.remove('open');
   });
 }
+
+// ===== FLOATING WHATSAPP BUTTON =====
+function initWhatsAppFloat() {
+  const wa = document.createElement('a');
+  wa.href = 'https://wa.me/917010539367';
+  wa.target = '_blank';
+  wa.rel = 'noopener';
+  wa.className = 'whatsapp-float';
+  wa.setAttribute('aria-label', 'Chat on WhatsApp');
+  wa.innerHTML = `
+    <img src="whatsapp.png" alt="WhatsApp" />
+  `;
+  document.body.appendChild(wa);
+}
+initWhatsAppFloat();
