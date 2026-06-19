@@ -80,14 +80,131 @@ if (particlesEl) {
   document.head.appendChild(pStyle);
 }
 
-// ===== FORM HANDLER =====
+// ===== FORM HANDLER WITH VALIDATION =====
 const form = document.getElementById('join-form');
 const modal = document.getElementById('success-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 
 if (form) {
+  const requiredInputs = form.querySelectorAll('[required]');
+
+  // Function to show error for a field
+  function showFieldError(input, message) {
+    const formGroup = input.closest('.form-group');
+    if (!formGroup) return;
+    
+    formGroup.classList.add('has-error');
+    
+    // Check if error message element already exists
+    let errorEl = formGroup.querySelector('.error-message');
+    if (!errorEl) {
+      errorEl = document.createElement('span');
+      errorEl.className = 'error-message';
+      formGroup.appendChild(errorEl);
+    }
+    errorEl.textContent = message;
+  }
+
+  // Function to clear error for a field
+  function clearFieldError(input) {
+    const formGroup = input.closest('.form-group');
+    if (!formGroup) return;
+    
+    formGroup.classList.remove('has-error');
+    const errorEl = formGroup.querySelector('.error-message');
+    if (errorEl) {
+      errorEl.remove();
+    }
+  }
+
+  // Function to validate a single field
+  function validateField(input) {
+    // 1. Check if empty
+    if (!input.value || input.value.trim() === '') {
+      let labelText = '';
+      const label = input.closest('.form-group')?.querySelector('label');
+      if (label) {
+        labelText = label.textContent.replace('*', '').trim();
+      } else {
+        labelText = input.placeholder || 'This field';
+      }
+      showFieldError(input, `${labelText} is required`);
+      return false;
+    }
+    
+    // 2. Email format validation
+    if (input.type === 'email') {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(input.value.trim())) {
+        showFieldError(input, 'Please enter a valid email address');
+        return false;
+      }
+    }
+    
+    // 3. Phone format validation
+    if (input.type === 'tel') {
+      const phonePattern = /^[0-9\s\-()+]{10,15}$/;
+      if (!phonePattern.test(input.value.trim())) {
+        showFieldError(input, 'Please enter a valid phone number (min 10 digits)');
+        return false;
+      }
+    }
+    
+    // 4. Age range validation
+    if (input.id === 'age') {
+      const ageVal = parseInt(input.value, 10);
+      const minAge = parseInt(input.getAttribute('min'), 10) || 15;
+      const maxAge = parseInt(input.getAttribute('max'), 10) || 50;
+      if (isNaN(ageVal) || ageVal < minAge || ageVal > maxAge) {
+        showFieldError(input, `Age must be between ${minAge} and ${maxAge}`);
+        return false;
+      }
+    }
+
+    clearFieldError(input);
+    return true;
+  }
+
+  // Bind dynamic listeners for validation while typing
+  requiredInputs.forEach(input => {
+    if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
+      input.addEventListener('input', () => {
+        validateField(input);
+      });
+      input.addEventListener('blur', () => {
+        validateField(input);
+      });
+    } else if (input.tagName === 'SELECT') {
+      input.addEventListener('change', () => {
+        validateField(input);
+      });
+    }
+  });
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    // Validate all fields on submit
+    let isFormValid = true;
+    let firstInvalidInput = null;
+
+    requiredInputs.forEach(input => {
+      const isValid = validateField(input);
+      if (!isValid) {
+        isFormValid = false;
+        if (!firstInvalidInput) {
+          firstInvalidInput = input;
+        }
+      }
+    });
+
+    if (!isFormValid) {
+      if (firstInvalidInput) {
+        firstInvalidInput.focus();
+        firstInvalidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return; // Stop form submission
+    }
 
     const btn = document.getElementById('submit-application-btn');
     btn.disabled = true;
@@ -137,6 +254,8 @@ if (form) {
       }
       
       form.reset();
+      // Clear any remaining success/error styling states
+      requiredInputs.forEach(input => clearFieldError(input));
     })
     .catch(error => {
       console.error("Error submitting form:", error);
