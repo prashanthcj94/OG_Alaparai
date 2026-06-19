@@ -273,7 +273,7 @@ if (modalCloseBtn && modal) {
   });
 }
 
-// ===== FLOATING WHATSAPP BUTTON =====
+// ===== FLOATING WHATSAPP BUTTON WITH RECURRING TOOLTIP =====
 function initWhatsAppFloat() {
   const wa = document.createElement('a');
   wa.href = 'https://wa.me/917010539367';
@@ -282,8 +282,48 @@ function initWhatsAppFloat() {
   wa.className = 'whatsapp-float';
   wa.setAttribute('aria-label', 'Chat on WhatsApp');
   wa.innerHTML = `
+    <div class="whatsapp-tooltip">
+      <span>💬 Connect now via WhatsApp</span>
+      <button class="tooltip-close" aria-label="Close tooltip">&times;</button>
+    </div>
     <img src="whatsapp.png" alt="WhatsApp" />
   `;
   document.body.appendChild(wa);
+
+  // Close button event listener
+  const closeBtn = wa.querySelector('.tooltip-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      wa.classList.remove('show-tooltip');
+      sessionStorage.setItem('wa-tooltip-dismissed', 'true');
+    });
+  }
+
+  // Function to show/hide tooltip
+  function triggerTooltip() {
+    if (sessionStorage.getItem('wa-tooltip-dismissed')) return;
+    wa.classList.add('show-tooltip');
+    
+    // Auto-hide the tooltip after 4 seconds
+    setTimeout(() => {
+      wa.classList.remove('show-tooltip');
+    }, 4000);
+  }
+
+  // Initial delay of 5 seconds on page load
+  setTimeout(() => {
+    triggerTooltip();
+  }, 5000);
+
+  // Repeat every 14 seconds (10 seconds gap + 4 seconds visible = 14 seconds cycle)
+  let intervalId = setInterval(() => {
+    if (sessionStorage.getItem('wa-tooltip-dismissed')) {
+      clearInterval(intervalId);
+      return;
+    }
+    triggerTooltip();
+  }, 14000);
 }
 initWhatsAppFloat();
