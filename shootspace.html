@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShootSpace – OG Alaparai Green Mat Studio Rental | Poonamallee, Chennai</title>
+  <meta name="description" content="Rent the OG Alaparai Green Mat Studio in Poonamallee, Chennai. Professional greenscreen setup for filmmakers, YouTubers, brands & content creators. Affordable, flexible slots available." />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== SHOOTSPACE PAGE STYLES ===== */
+    .shootspace-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      background: var(--black);
+      overflow: hidden;
+      text-align: center;
+    }
+    .shootspace-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(34, 197, 94, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 60%, rgba(245, 166, 35, 0.08) 0%, transparent 50%);
+    }
+    .shootspace-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .shootspace-hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #fff;
+      padding: .55rem 1.4rem;
+      border-radius: 24px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.35);
+      animation: bounce 2s infinite;
+    }
+    .shootspace-title {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .green {
+      color: #22c55e;
+    }
+    .shootspace-subtitle {
+      font-family: var(--font-heading);
+      color: var(--gray);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+    .shootspace-hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-green {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #fff;
+    }
+    .btn-green:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(34, 197, 94, 0.45);
+    }
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    /* ===== STUDIO IMAGE SHOWCASE ===== */
+    .studio-showcase-section {
+      background: var(--dark);
+    }
+    .studio-showcase-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .studio-main-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 50px rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      aspect-ratio: 4/3;
+    }
+    .studio-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .studio-main-image:hover img {
+      transform: scale(1.03);
+    }
+    .studio-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .studio-stat-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: 0.3s;
+    }
+    .studio-stat-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      transform: translateX(6px);
+    }
+    .studio-stat-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .studio-stat-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .studio-stat-card p {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.4;
+    }
+
+    /* ===== FEATURES GRID ===== */
+    .features-section {
+      background: var(--black);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+    .feature-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(34, 197, 94, 0.1);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .feature-card p {
+      color: #999;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ===== PRICING ===== */
+    .pricing-section {
+      background: var(--dark);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: 0.4s;
+      overflow: hidden;
+    }
+    .pricing-card.featured {
+      border-color: #22c55e;
+      box-shadow: 0 0 40px rgba(34, 197, 94, 0.15);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 50px rgba(34, 197, 94, 0.15);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      color: #000;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 0.35rem 1.2rem;
+      border-radius: 0 0 12px 12px;
+    }
+    .pricing-tier {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      color: #999;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .pricing-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .pricing-period {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .pricing-features li {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    .pricing-features li .check {
+      color: #22c55e;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .pricing-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+
+    /* ===== WHO IS IT FOR ===== */
+    .whois-section {
+      background: var(--black);
+    }
+    .whois-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .whois-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 2rem;
+      text-align: center;
+      transition: 0.35s;
+    }
+    .whois-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+    }
+    .whois-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .whois-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .whois-card p {
+      color: #999;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    /* ===== RULES & PROCESS ===== */
+    .rules-section {
+      background: var(--dark);
+    }
+    .rules-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .rules-card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .rules-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .rule-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+    .rule-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: rgba(34, 197, 94, 0.5);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2rem;
+      text-align: center;
+    }
+    .rule-item p {
+      color: #ccc;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding-top: 0.15rem;
+    }
+    .rule-item strong {
+      color: var(--white);
+    }
+    .do-list, .dont-list {
+      list-style: none;
+    }
+    .do-list li, .dont-list li {
+      padding: 0.55rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .do-list li:last-child, .dont-list li:last-child {
+      border-bottom: none;
+    }
+    .do-list li::before {
+      content: '✅';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .dont-list li::before {
+      content: '🚫';
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== BOOKING CTA ===== */
+    .booking-cta-section {
+      background: var(--black);
+    }
+    .booking-cta-card {
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(245, 166, 35, 0.08));
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 28px;
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-cta-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .booking-cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .booking-cta-card h2 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .booking-cta-card p {
+      color: #aaa;
+      font-size: 1.05rem;
+      max-width: 550px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    /* ===== BOOKING FORM ===== */
+    .booking-form-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+    .booking-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-bottom: 1.1rem;
+    }
+    .booking-form-full {
+      margin-bottom: 1.1rem;
+    }
+    .bf-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: #aaa;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .bf-group input,
+    .bf-group select,
+    .bf-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: 0.25s;
+      outline: none;
+    }
+    .bf-group input:focus,
+    .bf-group select:focus,
+    .bf-group textarea:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+    }
+    .bf-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-color: rgba(255,255,255,0.05);
+    }
+    .bf-group select option { background: #1a1a1a; color: #f5f5f5; }
+    .bf-group textarea { resize: vertical; min-height: 80px; }
+    /* Error state */
+    .bf-group.error input,
+    .bf-group.error select,
+    .bf-group.error textarea {
+      border-color: #e53935;
+      box-shadow: 0 0 0 3px rgba(229,57,53,0.15);
+    }
+    .bf-error {
+      display: none;
+      font-size: 0.75rem;
+      color: #e53935;
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+    .bf-group.error .bf-error { display: block; }
+    .bf-submit {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+    .bf-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(34,197,94,0.4); }
+    .bf-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+    .bf-note a { color: var(--gold); }
+    .booking-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      animation: fadeInUp 0.4s ease;
+    }
+    .booking-success .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .booking-success h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: #22c55e;
+      margin-bottom: 0.6rem;
+    }
+    .booking-success p { color: #aaa; font-size: 0.95rem; line-height: 1.7; }
+    @media (max-width: 640px) {
+      .booking-form-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== THANK YOU POPUP ===== */
+    .ty-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .ty-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .ty-modal {
+      background: linear-gradient(135deg, #111 60%, #0d2a17);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      position: relative;
+      transform: scale(0.8) translateY(30px);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(34,197,94,0.12);
+    }
+    .ty-overlay.active .ty-modal {
+      transform: scale(1) translateY(0);
+    }
+    .ty-icon {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(34,197,94,0.2), transparent 70%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      margin: 0 auto 1.5rem;
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.35); }
+      50%       { box-shadow: 0 0 0 16px rgba(34,197,94,0); }
+    }
+    .ty-modal h2 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      color: #22c55e;
+      margin-bottom: 0.6rem;
+    }
+    .ty-modal p {
+      color: #bbb;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .ty-close {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      background: #22c55e;
+      color: #000;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .ty-close:hover { background: #16a34a; color: #fff; transform: scale(1.04); }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+      background: var(--dark);
+    }
+    .faq-list {
+      max-width: 750px;
+      margin: 2.5rem auto 0;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .faq-item:hover {
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+    .faq-question {
+      padding: 1.3rem 1.5rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question:hover {
+      color: #22c55e;
+    }
+    .faq-toggle {
+      font-size: 1.3rem;
+      color: var(--gold);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+    .faq-answer p {
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      padding: 0 1.5rem 1.3rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .shootspace-title { font-size: 2.5rem; }
+      .studio-showcase-grid { grid-template-columns: 1fr; }
+      .rules-layout { grid-template-columns: 1fr; }
+      .booking-cta-card { padding: 2.5rem 1.5rem; }
+      .booking-cta-card h2 { font-size: 2rem; }
+      .contact-info-row { flex-direction: column; align-items: center; gap: 1rem; }
+    }
+  </style>
+</head>
+<body class="shootspace-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="OG Alaparai Logo" id="nav-logo-img" />
+        <span class="nav-brand">OG <span class="gold">ALAPARAI</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="content.html" class="nav-link">Content</a></li>
+        <li><a href="shootspace.html" class="nav-link active">ShootSpace</a></li>
+        <li><a href="team.html" class="nav-link">Team</a></li>
+        <li><a href="connect.html" class="nav-link">Connect</a></li>
+        <li><a href="join.html#apply" class="nav-link nav-cta">🔥 Join Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="shootspace-hero">
+    <div class="shootspace-hero-overlay"></div>
+    <div class="shootspace-hero-content">
+      <div class="shootspace-hero-badge">🎥 STUDIO RENTAL — POONAMALLEE</div>
+      <h1 class="shootspace-title">OG Alaparai<br/><span class="green">ShootSpace</span></h1>
+      <p class="shootspace-subtitle">Professional Green Mat Studio · Poonamallee, Chennai</p>
+      <div class="shootspace-hero-cta">
+        <a href="#booking" class="btn btn-green btn-large">📅 Book a Slot</a>
+        <a href="#pricing" class="btn btn-outline-gold btn-large">💰 View Pricing</a>
+      </div>
+    </div>
+    <div class="floating-emojis">
+      <span class="fe fe1">🎬</span>
+      <span class="fe fe2">🎥</span>
+      <span class="fe fe3">🟩</span>
+      <span class="fe fe4">💡</span>
+      <span class="fe fe5">🎞️</span>
+      <span class="fe fe6">📹</span>
+    </div>
+  </section>
+
+  <!-- ===== STUDIO SHOWCASE ===== -->
+  <section class="section studio-showcase-section">
+    <div class="section-container">
+      <div class="section-label">THE SPACE</div>
+      <h2 class="section-title">Your Canvas. <span class="green">Any World.</span></h2>
+      <p class="section-desc">OG Alaparai opens its greenscreen studio to creators across Chennai. Built with the same passion we put into our own content — this is where your vision comes to life.</p>
+      <div class="studio-showcase-grid">
+        <div class="studio-main-image">
+          <img src="studio_greenscreen.png" alt="OG Alaparai Green Mat Studio Interior" />
+        </div>
+        <div class="studio-info-panel">
+          <div class="studio-stat-card">
+            <div class="studio-stat-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Poonamallee, Chennai, Tamil Nadu — easily accessible from Porur, Ambattur & Avadi</p>
+            </div>
+          </div>
+          <div class="studio-stat-card">
+            <div class="studio-stat-icon">🟩</div>
+            <div>
+              <h4>Green Mat Setup</h4>
+              <p>High-quality professional green mat with uniform tone — perfect for seamless chroma key compositing</p>
+            </div>
+          </div>
+          <div class="studio-stat-card">
+            <div class="studio-stat-icon">💡</div>
+            <div>
+              <h4>Lighting</h4>
+              <p>Studio-grade lighting available to ensure even green coverage and zero shadow artefacts</p>
+            </div>
+          </div>
+          <div class="studio-stat-card">
+            <div class="studio-stat-icon">🕐</div>
+            <div>
+              <h4>Flexible Hours</h4>
+              <p>Book by the hour or the full day — morning, afternoon, and evening slots available</p>
+            </div>
+          </div>
+          <div class="studio-stat-card">
+            <div class="studio-stat-icon">🎭</div>
+            <div>
+              <h4>Content-Friendly</h4>
+              <p>Worked in by the OG Alaparai crew — we know what creators need and set it up accordingly</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="section features-section" id="features">
+    <div class="section-container">
+      <div class="section-label">WHAT YOU GET</div>
+      <h2 class="section-title">Everything a <span class="gold">Creator Needs</span></h2>
+      <p class="section-desc">Our studio is stocked and set up to get you rolling the moment you walk in. No setup delays, no surprises.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🟩</div>
+          <h3>Professional Green Mat</h3>
+          <p>Wrinkle-free, large-format chroma-key green mat that covers floor-to-wall — ideal for both sitting and standing shots.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Studio Lighting</h3>
+          <p>Professional LED lights to ensure even, shadow-free illumination on the green screen for clean chroma key results.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎙️</div>
+          <h3>Quiet Shoot Environment</h3>
+          <p>Studio is isolated from external noise, giving you a clean audio-recording environment for voiceovers and dialogue.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h3>Creator-Ready Space</h3>
+          <p>Used actively by our own team — the space is laid out for efficient filming with clear camera angles and easy access.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🅿️</div>
+          <h3>Parking Available</h3>
+          <p>Convenient parking space near the studio — no hunting for spots when you arrive with your crew and gear.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Power Outlets</h3>
+          <p>Multiple high-wattage power outlets available throughout the studio to power your cameras, monitors, and lights.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>OG Crew Support</h3>
+          <p>Our team is available on-site to assist with green mat setup, angle adjustments, and any basic production questions.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Easy Booking</h3>
+          <p>Book your slot via WhatsApp or direct call. Instant confirmation, zero hassle. We keep it simple for creators.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Affordable Rates</h3>
+          <p>Creator-friendly pricing — significantly cheaper than commercial studios without compromising on quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section pricing-section" id="pricing">
+    <div class="section-container">
+      <div class="section-label">PRICING PLANS</div>
+      <h2 class="section-title">Simple, <span class="green">Transparent</span> Pricing</h2>
+      <p class="section-desc">No hidden charges. No confusing add-ons. Just straightforward pricing so you can focus on creating.</p>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Quick Shot</div>
+          <div class="pricing-icon">⚡</div>
+          <div class="pricing-price">₹500</div>
+          <div class="pricing-period">per hour (2-hour minimum)</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Green mat setup included</li>
+            <li><span class="check">✓</span> Studio lighting included</li>
+            <li><span class="check">✓</span> Up to 3 crew members</li>
+            <li><span class="check">✓</span> Power outlets access</li>
+            <li><span class="check">✓</span> WhatsApp booking</li>
+          </ul>
+          <a href="#booking" class="btn btn-gold btn-full">Book Now</a>
+          <p class="pricing-note">Best for YouTube Shorts, reels & quick ads</p>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="popular-badge">⭐ MOST POPULAR</div>
+          <div class="pricing-tier">Half Day</div>
+          <div class="pricing-icon">🎬</div>
+          <div class="pricing-price">₹1,800</div>
+          <div class="pricing-period">4 hours (flexible time slot)</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Everything in Quick Shot</li>
+            <li><span class="check">✓</span> Up to 5 crew members</li>
+            <li><span class="check">✓</span> OG crew on-site assistance</li>
+            <li><span class="check">✓</span> Multiple scene setups</li>
+            <li><span class="check">✓</span> Priority slot booking</li>
+          </ul>
+          <a href="#booking" class="btn btn-green btn-full">Book Now</a>
+          <p class="pricing-note">Best for sketches, music videos & brand content</p>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Full Day</div>
+          <div class="pricing-icon">🚀</div>
+          <div class="pricing-price">₹3,000</div>
+          <div class="pricing-period">8 hours (morning to evening)</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> Everything in Half Day</li>
+            <li><span class="check">✓</span> Unlimited crew size</li>
+            <li><span class="check">✓</span> Full day studio control</li>
+            <li><span class="check">✓</span> Costume change breaks</li>
+            <li><span class="check">✓</span> Negotiable for productions</li>
+          </ul>
+          <a href="#booking" class="btn btn-gold btn-full">Book Now</a>
+          <p class="pricing-note">Best for short films, ad campaigns & series shoots</p>
+        </div>
+
+      </div>
+      <div style="text-align:center; margin-top: 2rem; color: #888; font-size: 0.9rem;">
+        📞 Custom packages available for agencies and production houses — <a href="#booking" style="color: var(--gold);">contact us to discuss</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO IS IT FOR ===== -->
+  <section class="section whois-section">
+    <div class="section-container">
+      <div class="section-label">MADE FOR</div>
+      <h2 class="section-title">Who Should <span class="gold">Book This?</span></h2>
+      <p class="section-desc">Our studio is built for creators of all scales — from solo YouTubers to production companies.</p>
+      <div class="whois-grid">
+        <div class="whois-card">
+          <div class="whois-emoji">📹</div>
+          <h4>YouTubers</h4>
+          <p>Add virtual backgrounds and high-quality chroma key sets to your channel content</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">📱</div>
+          <h4>Reels Creators</h4>
+          <p>Create stunning Instagram Reels and TikTok-style content with pro backgrounds</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🎭</div>
+          <h4>Actors & Auditions</h4>
+          <p>Shoot professional self-tapes and audition reels in a controlled studio environment</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🎵</div>
+          <h4>Music Video Artists</h4>
+          <p>Shoot high-energy music videos with creative virtual sets and dynamic backdrops</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🏢</div>
+          <h4>Brand & Startups</h4>
+          <p>Film product ads, corporate promos, and explainer videos with a clean green background</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🎓</div>
+          <h4>Students & Film Schools</h4>
+          <p>Affordable access to a real studio space for final year and passion projects</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🎙️</div>
+          <h4>Podcast Hosts</h4>
+          <p>Create a polished, professional visual look for your video podcast recordings</p>
+        </div>
+        <div class="whois-card">
+          <div class="whois-emoji">🎬</div>
+          <h4>Indie Filmmakers</h4>
+          <p>Shoot VFX-heavy short films and scenes without breaking your production budget</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING PROCESS & RULES ===== -->
+  <section class="section rules-section">
+    <div class="section-container">
+      <div class="section-label">HOW IT WORKS</div>
+      <h2 class="section-title">Booking Process & <span class="gold">Studio Rules</span></h2>
+      <p class="section-desc">Simple steps to get your slot confirmed plus our ground rules to keep the space clean and professional for everyone.</p>
+
+      <div class="rules-layout">
+        <!-- Booking Steps -->
+        <div class="rules-card">
+          <h3>📋 How to Book a Slot</h3>
+          <div class="rule-item">
+            <div class="rule-num">1</div>
+            <p><strong>Contact Us</strong> — WhatsApp or call us with your preferred date, time slot, and number of crew members.</p>
+          </div>
+          <div class="rule-item">
+            <div class="rule-num">2</div>
+            <p><strong>Slot Confirmation</strong> — We'll confirm availability within a few hours and send you your booking details.</p>
+          </div>
+          <div class="rule-item">
+            <div class="rule-num">3</div>
+            <p><strong>Advance Payment</strong> — A 50% advance secures your slot. Balance is due on the day of the shoot.</p>
+          </div>
+          <div class="rule-item">
+            <div class="rule-num">4</div>
+            <p><strong>Arrive & Shoot</strong> — Show up, get a quick studio orientation, and dive straight into your creative work!</p>
+          </div>
+          <div class="rule-item">
+            <div class="rule-num">5</div>
+            <p><strong>Wrap & Leave</strong> — Leave the studio in the same condition you found it. We'll handle the rest.</p>
+          </div>
+        </div>
+
+        <!-- Studio Rules -->
+        <div class="rules-card">
+          <h3>✅ Do's &amp; 🚫 Don'ts</h3>
+          <ul class="do-list" style="margin-bottom: 1.2rem;">
+            <li>Bring your own camera gear and memory cards</li>
+            <li>Arrive on time — your slot starts when booked</li>
+            <li>Brief your crew before arriving</li>
+            <li>Inform us of extra props or large equipment in advance</li>
+            <li>Keep the green mat clean and wrinkle-free during the shoot</li>
+          </ul>
+          <ul class="dont-list">
+            <li>No food or drinks near the green mat area</li>
+            <li>No sharp objects or footwear on the green mat</li>
+            <li>Do not move or adjust studio lights without permission</li>
+            <li>No smoking, alcohol, or narcotics on premises</li>
+            <li>Do not sub-rent or share slots without prior approval</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq-section">
+    <div class="section-container">
+      <div class="section-label">GOT QUESTIONS?</div>
+      <h2 class="section-title" style="text-align:center;">Frequently <span class="green">Asked</span> Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item" id="faq-1">
+          <div class="faq-question" onclick="toggleFaq('faq-1')">
+            Can I bring my own camera and lighting equipment?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! You are welcome to bring your own cameras, tripods, gimbals, and additional lights. Our studio provides the green mat and base studio lighting, but you can supplement it with your own gear. Just let us know in advance if you're bringing large rigs.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-2">
+          <div class="faq-question" onclick="toggleFaq('faq-2')">
+            What is the size of the green mat area?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Our green mat covers a generous floor-to-wall area suitable for 1–3 people in frame simultaneously. It works well for dialogue scenes, solo presenter shots, product demos, and music video setups. Contact us for the exact dimensions.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-3">
+          <div class="faq-question" onclick="toggleFaq('faq-3')">
+            Is there a cancellation or rescheduling policy?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Rescheduling requests made at least 24 hours in advance will be accommodated at no extra cost, subject to slot availability. Cancellations within 24 hours of the shoot may forfeit the advance payment. Contact us ASAP if plans change.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-4">
+          <div class="faq-question" onclick="toggleFaq('faq-4')">
+            Do you offer editing or post-production services?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>The studio rental is for shoot space only. However, OG Alaparai has an experienced editing team and we can discuss post-production support (chroma keying, colour grading, cuts) as a separate service. Reach out to us to know more.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-5">
+          <div class="faq-question" onclick="toggleFaq('faq-5')">
+            Can I visit the studio before booking?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We encourage a quick visit before your first booking. Contact us on WhatsApp to arrange a studio walkthrough at a mutually convenient time. Seeing the space in person helps you plan your shoot better.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-6">
+          <div class="faq-question" onclick="toggleFaq('faq-6')">
+            Are weekends and holidays available?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we try to keep the studio available on weekends and most public holidays. Weekend slots tend to fill up quickly, so book at least 3–5 days in advance to secure your preferred time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING FORM ===== -->
+  <section class="section booking-cta-section" id="booking">
+    <div class="section-container">
+      <div class="booking-cta-card">
+        <h2>Book Your <span class="green">Studio Slot</span></h2>
+        <p>Fill in the details below and we'll WhatsApp you a confirmation within hours. Simple, fast, hassle-free.</p>
+
+        <!-- Success State -->
+        <div class="booking-success" id="booking-success">
+          <div class="success-icon">📧</div>
+          <h3>Booking Request Sent!</h3>
+          <p>Your email client has opened with a pre-filled booking request.<br/>Send it to <strong style="color:#22c55e">contact@ogalaparai.com</strong> and our team will confirm your slot within a few hours. Get ready to shoot! 🟩</p>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form-wrap" id="booking-form-wrap">
+          <form id="studio-booking-form" novalidate>
+
+            <div class="booking-form-grid">
+              <div class="bf-group" id="grp-name">
+                <label for="bf-name">Full Name *</label>
+                <input type="text" id="bf-name" placeholder="Your full name" autocomplete="name" />
+                <span class="bf-error">Please enter your full name.</span>
+              </div>
+              <div class="bf-group" id="grp-phone">
+                <label for="bf-phone">WhatsApp Number *</label>
+                <input type="tel" id="bf-phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
+                <span class="bf-error">Please enter your WhatsApp number.</span>
+              </div>
+            </div>
+
+            <div class="booking-form-grid">
+              <div class="bf-group" id="grp-email">
+                <label for="bf-email">Email Address *</label>
+                <input type="email" id="bf-email" placeholder="your@email.com" autocomplete="email" />
+                <span class="bf-error">Please enter your email address.</span>
+              </div>
+              <div class="bf-group" id="grp-date">
+                <label for="bf-date">Preferred Shoot Date *</label>
+                <input type="date" id="bf-date" />
+                <span class="bf-error">Please select your shoot date.</span>
+              </div>
+            </div>
+
+            <div class="booking-form-grid">
+              <div class="bf-group" id="grp-slot">
+                <label for="bf-slot">Preferred Time Slot *</label>
+                <select id="bf-slot">
+                  <option value="" disabled selected>Select a slot...</option>
+                  <option>Morning (8 AM – 12 PM)</option>
+                  <option>Afternoon (12 PM – 4 PM)</option>
+                  <option>Evening (4 PM – 8 PM)</option>
+                  <option>Full Day (8 AM – 8 PM)</option>
+                  <option>Flexible / Any Time</option>
+                </select>
+                <span class="bf-error">Please select a time slot.</span>
+              </div>
+              <div class="bf-group" id="grp-plan">
+                <label for="bf-plan">Booking Plan *</label>
+                <select id="bf-plan">
+                  <option value="" disabled selected>Select a plan...</option>
+                  <option>⚡ Quick Shot – ₹500/hr (2hr min)</option>
+                  <option>🎬 Half Day – ₹1,800 (4 hrs)</option>
+                  <option>🚀 Full Day – ₹3,000 (8 hrs)</option>
+                  <option>💬 Custom Package – Discuss with team</option>
+                </select>
+                <span class="bf-error">Please select a booking plan.</span>
+              </div>
+            </div>
+
+            <div class="booking-form-grid">
+              <div class="bf-group" id="grp-crew">
+                <label for="bf-crew">Number of Crew Members *</label>
+                <select id="bf-crew">
+                  <option value="" disabled selected>Select crew size...</option>
+                  <option>Solo (just me)</option>
+                  <option>2 – 3 people</option>
+                  <option>4 – 5 people</option>
+                  <option>6 – 10 people</option>
+                  <option>10+ people</option>
+                </select>
+                <span class="bf-error">Please select your crew size.</span>
+              </div>
+              <div class="bf-group" id="grp-type">
+                <label for="bf-type">Content Type *</label>
+                <select id="bf-type">
+                  <option value="" disabled selected>What are you shooting?</option>
+                  <option>YouTube Video</option>
+                  <option>Instagram Reels / Shorts</option>
+                  <option>Music Video</option>
+                  <option>Brand / Product Ad</option>
+                  <option>Short Film / Web Series</option>
+                  <option>Podcast Recording</option>
+                  <option>Audition / Self Tape</option>
+                  <option>Corporate / Training Video</option>
+                  <option>Other</option>
+                </select>
+                <span class="bf-error">Please select the content type.</span>
+              </div>
+            </div>
+
+            <div class="booking-form-full bf-group">
+              <label for="bf-notes">Special Requirements / Notes</label>
+              <textarea id="bf-notes" rows="3" placeholder="Any special props, equipment, extra crew info, or questions for our team..."></textarea>
+            </div>
+
+            <button type="submit" class="bf-submit" id="studio-book-btn">
+              🎯 Grab Space!
+            </button>
+          </form>
+          <p class="bf-note">📧 Booking details will be emailed to <strong style="color:var(--gold)">contact@ogalaparai.com</strong> &nbsp;·&nbsp; 📍 Poonamallee, Chennai &nbsp;·&nbsp; We'll reply within a few hours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="logo.png" alt="OG Alaparai" class="footer-logo-img" />
+          <div>
+            <div class="footer-brand">OG <span class="gold">ALAPARAI</span></div>
+            <div class="footer-tagline">COMEDY • ENTERTAINMENT • SHOOTSPACE</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="content.html">Content</a>
+          <a href="shootspace.html">ShootSpace</a>
+          <a href="team.html">Team</a>
+          <a href="join.html">Join Us</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@OG_Alaparai" target="_blank" rel="noopener" class="social-btn yt" id="footer-yt-shootspace">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            YouTube
+          </a>
+          <a href="https://www.instagram.com/ogalaparai?igsh=MXBjYnR4ajNsdXlrcw==" target="_blank" rel="noopener" class="social-btn ig" id="footer-ig-shootspace">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 OG Alaparai. Made with ❤️ in Chennai.</p>
+        <p class="footer-sponsor">Sponsored by <strong>Krapes Media</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // FAQ accordion
+    function toggleFaq(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ===== BOOKING FORM VALIDATION =====
+    // Required fields config: [fieldId, groupId, errorMessage]
+    const requiredFields = [
+      { id: 'bf-name',  grp: 'grp-name',  msg: 'Please enter your full name.' },
+      { id: 'bf-phone', grp: 'grp-phone', msg: 'Please enter your WhatsApp number.' },
+      { id: 'bf-email', grp: 'grp-email', msg: 'Please enter your email address.' },
+      { id: 'bf-date',  grp: 'grp-date',  msg: 'Please select your shoot date.' },
+      { id: 'bf-slot',  grp: 'grp-slot',  msg: 'Please select a time slot.' },
+      { id: 'bf-plan',  grp: 'grp-plan',  msg: 'Please select a booking plan.' },
+      { id: 'bf-crew',  grp: 'grp-crew',  msg: 'Please select your crew size.' },
+      { id: 'bf-type',  grp: 'grp-type',  msg: 'Please select the content type.' },
+    ];
+
+    function showError(grpId) {
+      document.getElementById(grpId).classList.add('error');
+    }
+    function clearError(grpId) {
+      document.getElementById(grpId).classList.remove('error');
+    }
+
+    // Attach live listeners: clear error as soon as user fills the field
+    requiredFields.forEach(f => {
+      const el = document.getElementById(f.id);
+      const eventType = (el.tagName === 'SELECT') ? 'change' : 'input';
+      el.addEventListener(eventType, () => {
+        if (el.value.trim() !== '') clearError(f.grp);
+      });
+    });
+
+    // Studio Booking Form → Email
+    document.getElementById('studio-booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name  = document.getElementById('bf-name').value.trim();
+      const phone = document.getElementById('bf-phone').value.trim();
+      const email = document.getElementById('bf-email').value.trim();
+      const date  = document.getElementById('bf-date').value;
+      const slot  = document.getElementById('bf-slot').value;
+      const plan  = document.getElementById('bf-plan').value;
+      const crew  = document.getElementById('bf-crew').value;
+      const type  = document.getElementById('bf-type').value;
+      const notes = document.getElementById('bf-notes').value.trim();
+
+      // Validate all required fields and show per-field errors
+      let hasError = false;
+      requiredFields.forEach(f => {
+        const val = document.getElementById(f.id).value.trim();
+        if (!val) {
+          showError(f.grp);
+          hasError = true;
+        } else {
+          clearError(f.grp);
+        }
+      });
+
+      // Block submission if any required field is empty
+      if (hasError) {
+        // Scroll to first error
+        const firstError = document.querySelector('.bf-group.error');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Format date nicely
+      const dateFormatted = date
+        ? new Date(date).toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' })
+        : 'Not specified';
+
+      // Build email subject
+      const subject = encodeURIComponent('OG Alaparai ShootSpace – Booking Request from ' + name);
+
+      // Build email body
+      const bodyLines = [
+        'Hi OG Alaparai Team,',
+        '',
+        'I would like to book the Green Mat Studio. Here are my details:',
+        '',
+        'Name           : ' + name,
+        'Phone          : ' + phone,
+        (email ? 'Email          : ' + email : null),
+        'Shoot Date     : ' + dateFormatted,
+        'Time Slot      : ' + slot,
+        'Booking Plan   : ' + plan,
+        'Crew Size      : ' + crew,
+        'Content Type   : ' + type,
+        (notes ? 'Special Notes  : ' + notes : null),
+        '',
+        'Please confirm my slot at the earliest.',
+        '',
+        'Thank you!',
+        name
+      ].filter(l => l !== null);
+
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      const mailtoURL = 'mailto:contact@ogalaparai.com?subject=' + subject + '&body=' + body;
+
+      // Show Thank You popup
+      document.getElementById('ty-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Open email client
+      window.location.href = mailtoURL;
+    });
+
+    // Close popup handlers — using event delegation so DOM order doesn't matter
+    function closePopup() {
+      const overlay = document.getElementById('ty-overlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('click', function(e) {
+      if (e.target.id === 'ty-close-btn') closePopup();
+      if (e.target.id === 'ty-overlay') closePopup();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePopup();
+    });
+  </script>
+
+  <!-- ===== THANK YOU POPUP ===== -->
+  <div class="ty-overlay" id="ty-overlay" role="dialog" aria-modal="true" aria-labelledby="ty-heading">
+    <div class="ty-modal">
+      <div class="ty-icon">✅</div>
+      <h2 id="ty-heading">Thank You!</h2>
+      <p>Your response has been submitted.<br/>Our team will get back to you soon. 🟩</p>
+      <button class="ty-close" id="ty-close-btn">Close</button>
+    </div>
+  </div>
+
+</body>
+</html>
