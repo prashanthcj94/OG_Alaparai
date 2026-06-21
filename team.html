@@ -27,7 +27,7 @@
         <li><a href="shootspace.html" class="nav-link">ShootSpace</a></li>
         <li><a href="team.html" class="nav-link active">Team</a></li>
         <li><a href="connect.html" class="nav-link">Connect</a></li>
-        <li><a href="join.html#apply" class="nav-link nav-cta">🔥 Join Us</a></li>
+        <li><a href="#" class="nav-link nav-cta" data-open-join-modal>🔥 Join Us</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -39,7 +39,7 @@
   <section class="team-hero">
     <div class="team-hero-overlay"></div>
     <div class="team-hero-content">
-      <a href="join.html#apply" class="hero-badge bounce">👥 JOIN THE FAMILY</a>
+      <a href="#" class="hero-badge bounce" data-open-join-modal>👥 JOIN THE FAMILY</a>
       <h1 class="team-title">Meet the <span class="gold">ALAPARAI</span><br/>Crew</h1>
       <p class="team-subtitle">The Creative Minds, Filmmakers, & Actors Behind the Scenes!</p>
     </div>
@@ -112,7 +112,7 @@
       <div class="team-cta-card">
         <h3>Ready to Make Your <span class="gold">Mark?</span></h3>
         <p>Your background doesn't matter; your passion does. Apply to join the OG Alaparai family today!</p>
-        <a href="join.html#apply" class="btn btn-gold btn-large" id="team-cta-btn">🔥 Apply to Join the Team!</a>
+        <a href="#" class="btn btn-gold btn-large" id="team-cta-btn" data-open-join-modal>🔥 Apply to Join the Team!</a>
       </div>
     </div>
   </section>
@@ -153,6 +153,62 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===== APPLICATION FORM MODAL ===== -->
+  <div class="app-modal-overlay" id="app-modal-overlay">
+    <div class="app-modal" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="app-modal-title">
+      <button class="app-modal-close" aria-label="Close modal">&#10005;</button>
+      <div id="app-modal-form-section">
+        <div class="app-modal-header">
+          <div class="modal-badge">🎭 APPLY NOW</div>
+          <h2 id="app-modal-title">Join The <span class="gold">ALAPARAI</span> Team!</h2>
+          <p>Fill in your details below — we'll get back to you ASAP!</p>
+        </div>
+        <div class="email-notice">
+          <div class="email-notice-icon">📧</div>
+          <div><strong>Send your application to:</strong> <a href="mailto:contact@ogalaparai.com">contact@ogalaparai.com</a></div>
+        </div>
+        <form id="app-modal-form" novalidate>
+          <div class="form-row">
+            <div class="form-group"><label for="am-name">Full Name *</label><input type="text" id="am-name" name="am-fullName" placeholder="Your full name" required autocomplete="name" /></div>
+            <div class="form-group"><label for="am-age">Age *</label><input type="number" id="am-age" name="am-age" placeholder="Your age" min="15" max="60" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="am-phone">Phone Number *</label><input type="tel" id="am-phone" name="am-phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel" /></div>
+            <div class="form-group"><label for="am-email">Your Email *</label><input type="email" id="am-email" name="am-email" placeholder="your@email.com" required autocomplete="email" /></div>
+          </div>
+          <div class="form-group"><label for="am-location">Location (City / Area) *</label><input type="text" id="am-location" name="am-location" placeholder="e.g. Poonamallee, Chennai" required /></div>
+          <div class="form-group">
+            <label for="am-role">Role You're Applying For *</label>
+            <select id="am-role" name="am-role" required>
+              <option value="" disabled selected>Select your role...</option>
+              <option value="actor">🎭 Actor</option>
+              <option value="director">🎬 Director</option>
+              <option value="content-creator">💡 Content Creator</option>
+              <option value="script-writer">✍️ Script Writer</option>
+              <option value="editor">🖥️ Video Editor</option>
+              <option value="camera-dop">📷 Camera Man / DOP</option>
+              <option value="multiple">🌟 Multiple Roles</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="am-experience">Experience / Skills</label><textarea id="am-experience" name="am-experience" rows="3" placeholder="Tell us about your experience, skills, or why you want to join!"></textarea></div>
+          <div class="form-group"><label for="am-social">Social Media / Portfolio Links</label><input type="url" id="am-social" name="am-socialLinks" placeholder="YouTube / Instagram / Portfolio link" /></div>
+          <div class="form-group"><label for="am-whyjoin">Why Do You Want to Join OG Alaparai? *</label><textarea id="am-whyjoin" name="am-whyJoin" rows="3" placeholder="Tell us what drives you and why this is YOUR playground!" required></textarea></div>
+          <div class="resume-section">
+            <div class="resume-icon">📄</div>
+            <div><strong>Attach Your Resume</strong><p>Email your resume to: <a href="mailto:contact@ogalaparai.com?subject=OG Alaparai Application">contact@ogalaparai.com</a></p><p class="resume-hint">Subject: "OG Alaparai – [Your Name] – [Role]"</p></div>
+          </div>
+          <button type="submit" class="btn btn-gold btn-large btn-submit-modal" id="app-modal-submit-btn">🔥 Submit My Application</button>
+        </form>
+      </div>
+      <div class="app-modal-success" id="app-modal-success">
+        <div class="success-icon">🎉</div>
+        <h3>Application Submitted!</h3>
+        <p>Thank you! Your response has been received. We'll reach out to you soon. 🔥</p>
+        <button class="btn btn-gold" id="app-modal-success-close">Awesome, Close!</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

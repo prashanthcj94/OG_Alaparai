@@ -327,3 +327,157 @@ function initWhatsAppFloat() {
   }, 14000);
 }
 initWhatsAppFloat();
+
+// ===== APPLICATION FORM MODAL =====
+(function () {
+  const overlay  = document.getElementById('app-modal-overlay');
+  const appModal = document.getElementById('app-modal');
+  if (!overlay || !appModal) return;
+
+  const appForm       = document.getElementById('app-modal-form');
+  const formSection   = document.getElementById('app-modal-form-section');
+  const successSection= document.getElementById('app-modal-success');
+  const submitBtn     = document.getElementById('app-modal-submit-btn');
+  const closeBtns     = document.querySelectorAll('.app-modal-close');
+  const successClose  = document.getElementById('app-modal-success-close');
+
+  // --- Open ---
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    appModal.scrollTop = 0;
+    // Reset to form view
+    if (formSection) formSection.style.display = '';
+    if (successSection) successSection.style.display = 'none';
+  }
+
+  // --- Close ---
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Trigger open on all "Join Us" / "Join the Team" triggers
+  document.querySelectorAll('[data-open-join-modal]').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Close on X button(s)
+  closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+
+  // Close on overlay backdrop click
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Success close
+  if (successClose) successClose.addEventListener('click', closeModal);
+
+  // --- Validation helpers ---
+  function showErr(input, msg) {
+    const grp = input.closest('.form-group');
+    if (!grp) return;
+    grp.classList.add('has-error');
+    let el = grp.querySelector('.error-message');
+    if (!el) { el = document.createElement('span'); el.className = 'error-message'; grp.appendChild(el); }
+    el.textContent = msg;
+  }
+
+  function clearErr(input) {
+    const grp = input.closest('.form-group');
+    if (!grp) return;
+    grp.classList.remove('has-error');
+    const el = grp.querySelector('.error-message');
+    if (el) el.remove();
+  }
+
+  function validateInput(input) {
+    const val = input.value.trim();
+    const labelEl = input.closest('.form-group')?.querySelector('label');
+    const labelTxt = labelEl ? labelEl.textContent.replace('*','').trim() : 'This field';
+
+    if (!val) { showErr(input, `${labelTxt} is required`); return false; }
+
+    if (input.type === 'email') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { showErr(input, 'Enter a valid email address'); return false; }
+    }
+    if (input.type === 'tel') {
+      if (!/^[0-9\s\-()+]{10,15}$/.test(val)) { showErr(input, 'Enter a valid phone number (min 10 digits)'); return false; }
+    }
+    if (input.id === 'am-age') {
+      const age = parseInt(val, 10);
+      if (isNaN(age) || age < 15 || age > 60) { showErr(input, 'Age must be between 15 and 60'); return false; }
+    }
+    clearErr(input);
+    return true;
+  }
+
+  if (!appForm) return;
+
+  // Live validation
+  appForm.querySelectorAll('[required]').forEach(inp => {
+    const evt = (inp.tagName === 'SELECT') ? 'change' : 'input';
+    inp.addEventListener(evt, () => validateInput(inp));
+    inp.addEventListener('blur',   () => validateInput(inp));
+  });
+
+  // --- Submit ---
+  appForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const required = appForm.querySelectorAll('[required]');
+    let valid = true, firstBad = null;
+
+    required.forEach(inp => {
+      if (!validateInput(inp)) { valid = false; if (!firstBad) firstBad = inp; }
+    });
+
+    if (!valid) {
+      if (firstBad) { firstBad.focus(); firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ Submitting...';
+
+    const fd = new FormData(appForm);
+
+    fetch('https://formsubmit.co/ajax/contact@ogalaparai.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        Name:                fd.get('am-fullName') || '',
+        Age:                 fd.get('am-age')      || '',
+        Phone:               fd.get('am-phone')    || '',
+        Email:               fd.get('am-email')    || '',
+        Location:            fd.get('am-location') || '',
+        Role:                fd.get('am-role')     || '',
+        'Experience/Skills': fd.get('am-experience') || '',
+        'Social/Portfolio':  fd.get('am-socialLinks') || '',
+        'Why Join':          fd.get('am-whyJoin')  || ''
+      })
+    })
+    .then(r => r.json())
+    .then(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '🔥 Submit My Application';
+      appForm.reset();
+      appForm.querySelectorAll('[required]').forEach(clearErr);
+      if (formSection) formSection.style.display = 'none';
+      if (successSection) { successSection.style.display = 'block'; }
+    })
+    .catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '🔥 Submit My Application';
+      alert('Something went wrong. Please email us directly at contact@ogalaparai.com');
+    });
+  });
+})();
